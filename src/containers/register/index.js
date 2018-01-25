@@ -36,39 +36,28 @@ function getModalStyle() {
 }
 
 class SimpleModal extends React.Component {
-    state = {
-	open: false
-    }
-    render() {
-	const { auth } = this.props
-	return (
-	    <div>
-		<Button onClick={()=>{this.setState({open:true})}} style={{
-		    backgroundColor:'#ffbb42',
-		    width:'75vw',
-		    borderRadius:23,
-		    marginTop:15,
-		    color:'#db4e4e'
-		}} raised >领取</Button>
-		<Modal
-		    aria-labelledby="simple-modal-title"
-		    aria-describedby="simple-modal-description"
-		    open={this.state.open}
-		    onClose={()=>this.setState({open:false})}>
-		    <div style={getModalStyle()}>
-			<Typography type="title" id="modal-title">糖果社区</Typography>
-			<Grid style={{display:'flex',flexDirection:'column'}}>
-			    <TextField id="name" label="手机号" margin="normal" />
-			    <TextField id="name" label="验证码" margin="normal" />
-			    <Button
-				onClick={()=>navigate('/info')} color="secondary" raised style={{marginTop:25}}>
-				查看我的糖果！
-			    </Button>
-			</Grid>
-		    </div>
-		</Modal>
-	    </div>
 
+    render() {
+	const { auth, dispatch } = this.props
+	const handleClose = reddit => dispatch({type:"REGISTER",reddit})
+	return (
+	    <Modal
+		aria-labelledby="simple-modal-title"
+		aria-describedby="simple-modal-description"
+		open={auth.register}
+		onClose={()=>handleClose(false)}>
+		<div style={getModalStyle()}>
+		    <Typography type="title" id="modal-title">糖果社区</Typography>
+		    <Grid style={{display:'flex',flexDirection:'column'}}>
+			<TextField id="name" label="手机号" margin="normal" />
+			<TextField id="name" label="验证码" margin="normal" />
+			<Button
+			    onClick={()=>navigate('/info')} color="secondary" raised style={{marginTop:25}}>
+			    查看我的糖果！
+			</Button>
+		    </Grid>
+		</div>
+	    </Modal>
 	);
     }
 }

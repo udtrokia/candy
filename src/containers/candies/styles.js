@@ -14,6 +14,24 @@ const styles = theme =>({
     img:{
 	width:228,
 	height:228
+    },
+    divider:{
+	height:1,
+	width:'80vw',
+	marginTop:15,
+	marginBottom:15,
+	backgroundColor:'#ffbb42',	
+    },
+    p:{
+	width:'80vw',
+	color:'#ffbb42'
+    },
+    btn:{
+        width:'75vw',
+        borderRadius:23,
+        marginTop:15,
+        color:'#db4e4e',
+	backgroundColor:'#ffbb42',
     }
 })
 

@@ -21,7 +21,6 @@ const drops = ( state = false, action ) =>{
 }
 
 const register = ( state = false, action ) =>{
-    console.log(state)
     switch(action.type){
 	case 'REGISTER':
 	    return(action.reddit)

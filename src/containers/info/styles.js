@@ -17,8 +17,30 @@ const styles = theme => ({
 	height:'100vh'
     },
     btn:{
+	backgroundColor:'#ffbb42',
+	borderRadius:23,
+	width:230,
+	marginTop:50
+    },
+    p:{
+	width:'80vw',
+	color:'#ffbb42'
+    },
+    field:{
+	width:'80vw',
+	color:'#ffbb42',
+	marginTop:30,                                                          
+	paddingTop:30,
+	paddingBottom:30,
+	paddLeft:10,
+	paddingRight:10,
+	backgroundColor:'#df5f5f'
+    },
+    website:{
 	display:'flex',
-	margin: theme.spacing.unit * 3
+	marginTop:188,
+	justifyContent:'flex-end',
+	alignItems:'flex-end',
     }
 });
 
