@@ -11,8 +11,27 @@ const isAuthenticated = ( state = false, action ) =>{
     
 }
 
+const drops = ( state = false, action ) =>{
+    switch(action.type){
+	case 'DROPS':
+	    return(action.reddit)
+	default:
+	    return state
+    }
+}
+
+const register = ( state = false, action ) =>{
+    console.log(state)
+    switch(action.type){
+	case 'REGISTER':
+	    return(action.reddit)
+	default:
+	    return state
+    }
+}
+
 const auth = combineReducers({
-    isAuthenticated
+    isAuthenticated, register, drops
 })
 
 export default auth

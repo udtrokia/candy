@@ -1,0 +1,16 @@
+.m{
+{
+    background:blue;
+    transition-property:width;
+    transition-duration:5s;
+    /* Firefox 4 */
+    -moz-transition-property:width;
+    -moz-transition-duration:5s;
+    /* Safari and Chrome */
+    -webkit-transition-property:width;
+    -webkit-transition-duration:5s;
+    /* Opera */
+    -o-transition-property:width;
+    -o-transition-duration:5s;
+}
+}

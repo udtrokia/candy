@@ -1,0 +1,21 @@
+#m{
+    transition-property: width;
+    transition-duration: 1s;
+    transition-timing-function: linear;
+    transition-delay: 2s;
+    /* Firefox 4 */
+    -moz-transition-property:width;
+    -moz-transition-duration:1s;
+    -moz-transition-timing-function:linear;
+    -moz-transition-delay:2s;
+    /* Safari 和 Chrome */
+    -webkit-transition-property:width;
+    -webkit-transition-duration:1s;
+    -webkit-transition-timing-function:linear;
+    -webkit-transition-delay:2s;
+    /* Opera */
+    -o-transition-property:width;
+    -o-transition-duration:1s;
+    -o-transition-timing-function:linear;
+    -o-transition-delay:2s;
+}

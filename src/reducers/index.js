@@ -1,5 +1,5 @@
 
-import { combinReducers } from 'redux'
+import { combineReducers } from 'redux'
 
 import auth from './auth'
 

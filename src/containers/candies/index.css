@@ -1,0 +1,31 @@
+
+
+#m{
+    width:100px;
+    height:100px;
+    background:red;
+    animation:myfirst 5s;
+    position:relative;
+    -webkit-animation:myfirst 5s; /* Safari and Chrome */
+    -webkit-transform: translateY(-100px);
+}
+
+@keyframes myfirst{
+    from {background:red;}
+    to {background:yellow;}
+}
+
+@-webkit-keyframes myfirst /* Safari and Chrome */{
+    from {
+	background:red;
+	left:0px;
+	bottom:0px;
+    }
+    to {
+	left:50vw;
+	bottom:-9999px;
+	background:yellow;
+	transform: translateY(-100px);
+    }
+    
+}
