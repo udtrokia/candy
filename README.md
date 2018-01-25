@@ -5,6 +5,13 @@
 ├── components  
 ├── containers  
 │   ├── candies  
-│   └── info  
+│   │   └── snackbar  
+│   ├── info  
+│   └── register  
 └── reducers  
     └── auth  
+
+#### V0.1.0
+
+- [ ] basic ui
+- [ ] basic router
