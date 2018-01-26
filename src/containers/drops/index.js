@@ -12,8 +12,8 @@ class Drops extends Component{
 //	}else{	
 //	    candy = "candy"
 //	}
-	var arr = new Array(25);
-	for(var i = 0;i < 25;i++){
+	var arr = new Array(12);
+	for(var i = 0;i < 12;i++){
 	    arr[i] = i
 	}
 	let CandyItem = () =>{

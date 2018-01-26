@@ -46,7 +46,7 @@ class SimpleModal extends React.Component {
 	    <Modal
 		aria-labelledby="simple-modal-title"
 		aria-describedby="simple-modal-description"
-		open={true}
+		open={auth.register}
 		onClose={()=>handleClose(false)}>
 		<div style={getModalStyle()}>
 		    <Typography type="title" id="modal-title" style={{color:'#ffbb42'}}>糖果社区</Typography>
