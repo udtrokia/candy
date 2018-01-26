@@ -24,8 +24,8 @@ function getModalStyle() {
     
     return {
 	position: 'absolute',
-	width: `72%`,
-	height:'60vw',
+	width: 300,
+	height:250,
 	top: `${top}%`,
 	left: `${left}%`,
 	transform: `translate(-${top}%, -${left}%)`,
@@ -46,7 +46,7 @@ class SimpleModal extends React.Component {
 	    <Modal
 		aria-labelledby="simple-modal-title"
 		aria-describedby="simple-modal-description"
-		open={auth.register}
+		open={true}
 		onClose={()=>handleClose(false)}>
 		<div style={getModalStyle()}>
 		    <Typography type="title" id="modal-title" style={{color:'#ffbb42'}}>糖果社区</Typography>

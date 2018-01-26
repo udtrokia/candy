@@ -27,8 +27,8 @@ const styles = theme =>({
     },
     btn:{
 	marginTop:15,
-        width:'55vw',
-	height:'15vw',
+        width:220,
+	height:55,
 	backgroundImage: 'url('+require('./assets/btn.png') +')',
         backgroundSize: "cover",
         backgroundRepeat: 'no-repeat',
@@ -50,23 +50,25 @@ const styles = theme =>({
 	position:'absolute'
     },
     _package:{
-
-	height:'156px',
-	width: '156px',
+	position:'relative',
+	left:12,
+	height: 180,
+	width: 180,
 	backgroundImage: 'url('+require('./assets/package.png') +')',
 	backgroundSize: "156px 156px",
 	backgroundRepeat: 'no-repeat',
     },
     _banner:{
-	width:'90vw',
-	height:'30vw',
+	width:300,
+	height:98,
 	backgroundImage: 'url('+require('./assets/banner.png') +')',
 	backgroundSize: "cover",
 	backgroundRepeat: 'no-repeat',	
     },
     _bar:{
-	width:'90%',
-	height:'30vw',
+	position:'relative',
+	width:240,
+	height:90,
 	backgroundImage: 'url('+require('./assets/bar.png') +')',
 	backgroundSize: "cover",
 	backgroundRepeat: 'no-repeat',

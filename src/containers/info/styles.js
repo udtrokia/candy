@@ -16,10 +16,10 @@ const styles = theme => ({
 	height:'100vh'
     },
     btn:{
-	width:230,
-	height:170,
-	marginTop:40,
-	paddingBottom:30,
+	top:50,
+	position:'relative',
+	width:220,
+	height:55,
 	backgroundImage: 'url('+require('./images/btn.png') +')',
         backgroundSize:'cover',
         backgroundRepeat: 'no-repeat',
@@ -29,31 +29,26 @@ const styles = theme => ({
 	color:'#ffbb42'
     },
     box:{
-	display:'flex',
-	width:'45vw',
+	top: theme.spacing.unit * 5,
+	right: theme.spacing.unit * 1,
+	position:'relative',
+	width:170,
+	height:179,
 	color:'#ffbb42',
-	marginTop:30,                                              
-	paddingTop:30,
-	paddingBottom:30,
-	paddLeft:10,
-	paddingRight:10,
 	backgroundImage: 'url('+require('./images/box.png') +')',
 	backgroundSize:'cover',
 	backgroundRepeat: 'no-repeat',
-        height:'100%'	
     },
     field:{
-	width:'85vw',
+	top:theme.spacing.unit * 4,
+	position:'relative',
+	width:318,
+        height:169,
 	color:'#ffbb42',
-	display:'flex',
-	paddingTop:50,
-	paddingBottom:50,
-	paddLeft:10,
-	paddingRight:10,
 	backgroundImage: 'url('+require('./images/bar.png') +')',
 	backgroundSize:'cover',
 	backgroundRepeat: 'no-repeat',
-        height:'120vw'	
+
     },
     website:{
 	display:'flex',
