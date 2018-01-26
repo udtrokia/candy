@@ -11,13 +11,20 @@ import Register from '../register'
 import { connect } from 'react-redux'
 import './index.css'
 import _text from './text'
+import Drops from '../drops'
 
 class Candies extends Component{
     render(){
 	const { classes, dispatch } = this.props
-	const _register = reddit => dispatch({type:"REGISTER", reddit})
+	const _register = async(reddit) => {
+	    await dispatch({type:"DROPS", reddit})	    	    
+	    await dispatch({type:"REGISTER", reddit})
+
+	}
+	const _drops = reddit => dispatch({type:"DROPS", reddit})
 	return(
 	    <Grid>
+		<Drops />
 		<Grid className={classes.ctn} style={{height:'100vh'}}>
 		    <Typography type="headline" className={classes.title}>
 			{_text.title}
@@ -32,7 +39,7 @@ class Candies extends Component{
 		    <Typography className={classes.p}>
 			{_text.presentIntro}
 		    </Typography>
-                <Button onClick={()=>{ _register(true)}} className={classes.btn} raised >领取</Button>
+		    <Button onClick={()=>{ _register(true)}} className={classes.btn} raised >领取</Button>
 		    <Register />
 		</Grid>
 		<Grid className={classes.ctn} style={{justifyContent:'flex-start',paddingBottom:50}}>
@@ -60,9 +67,7 @@ class Candies extends Component{
 		    <Typography type="subheading" className={classes.p} style={{ margin:20 }}>
 			{_text.orgTitle}
 		    </Typography>
-		    <Typography className={classes.p} gutterBottom>
-			{_text.orgContent}
-		    </Typography>
+		    <Typography className={classes.p} gutterBottom>{_text.orgContent}</Typography>
 		</Grid>
 	    </Grid>
 	)

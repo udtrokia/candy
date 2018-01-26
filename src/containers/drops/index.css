@@ -1,0 +1,41 @@
+
+#ctn{
+    display:'flex';
+    flexDirection:'row'
+}
+.candy{
+    height:48px;
+    width:48px;
+    display:none;
+}
+
+.candy_drops{
+    height:48px;
+    width:48px;
+    position: absolute;
+    animation: drops 1s infinite;
+    -webkit-animation: drops 1.5s ease 1;
+    -webkit-animation-fill-mode:forwards;
+    -moz-animation: drops 1.5s ease 1;
+    -moz-animation-fill-mode:forwards;
+    -ms-animation: drops 1.5s ease 1;
+    -ms-animation-fill-mode:forwards;
+}
+
+@keyframes drops{
+    from { z-index:999;}
+    to{ z-index:-1; top:120%;}
+}
+
+@-webkit-keyframes drops{
+    from { z-index:999;}
+    to{ z-index:-1; top:120%;}
+}
+@-moz-keyframes drops{
+    from { z-index:999;}
+    to{ z-index:-1; top:120%;}
+}
+@-ms-keyframes drops{
+    from { z-index:999;}
+    to{ z-index:-1; top:120%;}
+}

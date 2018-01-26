@@ -29,7 +29,7 @@ const styles = theme =>({
     btn:{
         width:'75vw',
         borderRadius:23,
-        marginTop:15,
+        marginTop:25,
         color:'#db4e4e',
 	backgroundColor:'#ffbb42',
     }
