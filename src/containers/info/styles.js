@@ -13,34 +13,59 @@ const styles = theme => ({
 	flexDirection:'column',
 	alignItems:'center',
 	justifyContent:'center',
-	backgroundColor:'#db4e4e',
 	height:'100vh'
     },
     btn:{
-	backgroundColor:'#ffbb42',
-	borderRadius:23,
 	width:230,
-	marginTop:50
+	height:170,
+	marginTop:40,
+	paddingBottom:30,
+	backgroundImage: 'url('+require('./images/btn.png') +')',
+        backgroundSize:'cover',
+        backgroundRepeat: 'no-repeat',
     },
     p:{
 	width:'80vw',
 	color:'#ffbb42'
     },
-    field:{
-	width:'80vw',
+    box:{
+	display:'flex',
+	width:'45vw',
 	color:'#ffbb42',
-	marginTop:30,                                                          
+	marginTop:30,                                              
 	paddingTop:30,
 	paddingBottom:30,
 	paddLeft:10,
 	paddingRight:10,
-	backgroundColor:'#df5f5f'
+	backgroundImage: 'url('+require('./images/box.png') +')',
+	backgroundSize:'cover',
+	backgroundRepeat: 'no-repeat',
+        height:'100%'	
+    },
+    field:{
+	width:'85vw',
+	color:'#ffbb42',
+	display:'flex',
+	paddingTop:50,
+	paddingBottom:50,
+	paddLeft:10,
+	paddingRight:10,
+	backgroundImage: 'url('+require('./images/bar.png') +')',
+	backgroundSize:'cover',
+	backgroundRepeat: 'no-repeat',
+        height:'120vw'	
     },
     website:{
 	display:'flex',
-	marginTop:188,
-	justifyContent:'flex-end',
-	alignItems:'flex-end',
+	marginTop:100,
+	marginBottom:30,
+	justifyContent:'center',
+	alignItems:'center',
+    },
+    bg:{
+        backgroundImage: 'url('+require('./images/bg.png') +')',
+	backgroundSize:'cover',
+	backgroundRepeat: 'no-repeat',	
     }
 });
 

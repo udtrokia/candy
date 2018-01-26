@@ -6,20 +6,19 @@ import './index.css'
 class Drops extends Component{
     render(){
 	const { auth } = this.props
-	let candy = ""
-	if(auth.register){
-	    candy = "candy_drops"
-	}else{	
-	    candy = "candy"
-	}
-	var arr = new Array(50);
-	for(var i = 0;i < 50;i++){
+	let candy = "candy_drops"
+//	if(auth.register){
+//	    candy = "candy_drops"
+//	}else{	
+//	    candy = "candy"
+//	}
+	var arr = new Array(25);
+	for(var i = 0;i < 25;i++){
 	    arr[i] = i
 	}
 	let CandyItem = () =>{
-	    let random = Math.random(1)*100
+	    let random = Math.random(1)*85
 	    let random2 = Math.random(1)*50
-	    console.log(random2)
 	    return(
 		<img style={{left:`${random}%`,top:`${random2}%`}} className={candy} src={Candy} alt='candy'/>
 	    )

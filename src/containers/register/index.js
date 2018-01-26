@@ -24,14 +24,16 @@ function getModalStyle() {
     
     return {
 	position: 'absolute',
-	width: `60%`,
+	width: `72%`,
+	height:'60vw',
 	top: `${top}%`,
 	left: `${left}%`,
 	transform: `translate(-${top}%, -${left}%)`,
-	border: '1px solid #e5e5e5',
-	backgroundColor: '#fff',
 	boxShadow: '0 5px 15px rgba(0, 0, 0, .5)',
 	padding: 8 * 4,
+        backgroundImage: 'url('+require('./board.png') +')',
+        backgroundSize: "cover",
+        backgroundRepeat: 'no-repeat',	
     };
 }
 
@@ -47,12 +49,13 @@ class SimpleModal extends React.Component {
 		open={auth.register}
 		onClose={()=>handleClose(false)}>
 		<div style={getModalStyle()}>
-		    <Typography type="title" id="modal-title">糖果社区</Typography>
+		    <Typography type="title" id="modal-title" style={{color:'#ffbb42'}}>糖果社区</Typography>
 		    <Grid style={{display:'flex',flexDirection:'column'}}>
 			<TextField id="name" label="手机号" margin="normal" />
 			<TextField id="name" label="验证码" margin="normal" />
 			<Button
-			    onClick={()=>navigate('/info')} color="secondary" raised style={{marginTop:25}}>
+			    style={{ marginTop:25,color:'#db4e4e',backgroundColor:'#ffbb42'}}
+			    onClick={()=>navigate('/info')} raised >
 			    查看我的糖果！
 			</Button>
 		    </Grid>

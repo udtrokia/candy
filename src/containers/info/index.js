@@ -9,15 +9,11 @@ import _text from './text.json'
 function PaperSheet(props) {
   const { classes } = props;
   return (
-    <div className={classes.ctn}>
-	<Typography type="headline" align="center" className={classes.p}>
-	    {_text.title}
-	</Typography>
-	<Typography align="center" className={classes.field}>
-	    {_text.copyContent}
-	</Typography>
-	<Button raised className={classes.btn} >{_text.copy}</Button>
-	<Typography type="body1" className={[classes.p,classes.website]} >
+    <div className={classes.ctn+" "+classes.bg}>
+	<Typography type="headline" align="center" className={classes.box} />
+	<Typography align="center" className={classes.field} />
+	<Button className={classes.btn} onClick={()=>{alert('复制成功！快去分享糖果吧！')}} />
+	<Typography align="center" type="body1" className={[classes.p,classes.website]} >
 	    {_text.website}
 	</Typography>	
     </div>

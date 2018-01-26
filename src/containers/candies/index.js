@@ -1,4 +1,3 @@
-
 //
 import React, { Component } from 'react'
 import { withStyles } from 'material-ui/styles'
@@ -17,29 +16,30 @@ class Candies extends Component{
     render(){
 	const { classes, dispatch } = this.props
 	const _register = async(reddit) => {
-	    await dispatch({type:"DROPS", reddit})	    	    
 	    await dispatch({type:"REGISTER", reddit})
-
 	}
-	const _drops = reddit => dispatch({type:"DROPS", reddit})
 	return(
-	    <Grid>
+	    <Grid className={classes.bg}>
 		<Drops />
 		<Grid className={classes.ctn} style={{height:'100vh'}}>
-		    <Typography type="headline" className={classes.title}>
-			{_text.title}
-		    </Typography>
-		    <Typography >
-			<img alt="pics" className={classes.img} src={require('./WechatIMG8.png')}/>
-		    </Typography>
-		    <Typography type="subheading" style={{color:'#ffbb42'}} >
-			{_text.present}
-		    </Typography>
+		    <Typography className={classes._banner} />
+		    <Grid className={classes.candies}>
+		    <Typography id="c1" className={classes.candy}/>
+		    <Typography id="c2" className={classes.candy}/>
+		    <Typography id="c3" className={classes.candy}/>
+		    <Typography id="c4" className={classes.candy}/>
+		    <Typography id="c5" className={classes.candy}/>
+		    <Typography id="c6" className={classes.candy}/>
+		    <Typography id="c7" className={classes.candy}/>
+		    <Typography id="c8" className={classes.candy}/>		    
+		    </Grid>
+		    <Typography className={classes._package}/>
+		    <Typography className={classes._bar}/>
 		    <Divider className={classes.divider} />
 		    <Typography className={classes.p}>
 			{_text.presentIntro}
 		    </Typography>
-		    <Button onClick={()=>{ _register(true)}} className={classes.btn} raised >领取</Button>
+		    <Button onClick={()=>{ _register(true)}} className={classes.btn} />
 		    <Register />
 		</Grid>
 		<Grid className={classes.ctn} style={{justifyContent:'flex-start',paddingBottom:50}}>

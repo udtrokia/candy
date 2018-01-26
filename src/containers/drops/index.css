@@ -1,4 +1,6 @@
-
+html,body,div{
+    ovderflow-x:hidden!important;
+}
 #ctn{
     display:'flex';
     flexDirection:'row'
@@ -13,29 +15,47 @@
     height:48px;
     width:48px;
     position: absolute;
-    animation: drops 1s infinite;
-    -webkit-animation: drops 1.5s ease 1;
+    animation: drops 3s infinite;
+    -webkit-animation: drops 3s ease 1;
     -webkit-animation-fill-mode:forwards;
-    -moz-animation: drops 1.5s ease 1;
+    -moz-animation: drops 3s ease 1;
     -moz-animation-fill-mode:forwards;
-    -ms-animation: drops 1.5s ease 1;
+    -ms-animation: drops 3s ease 1;
     -ms-animation-fill-mode:forwards;
 }
 
 @keyframes drops{
     from { z-index:999;}
-    to{ z-index:-1; top:120%;}
+    to{ z-index:-1; top:150%;display:none}
 }
 
 @-webkit-keyframes drops{
     from { z-index:999;}
-    to{ z-index:-1; top:120%;}
+    to{ z-index:-1; top:150%;display:none}
 }
 @-moz-keyframes drops{
     from { z-index:999;}
-    to{ z-index:-1; top:120%;}
+    to{ z-index:-99; top:150%;display:none}
 }
 @-ms-keyframes drops{
     from { z-index:999;}
-    to{ z-index:-1; top:120%;}
+    to{ z-index:-99; top:150%;display:none}
+}
+
+@keyframes lastdrop{
+    from { z-index:999;}
+    to{ z-index:-99; top:150%;display:none}
+}
+
+@-webkit-keyframes lastdrop{
+    from { z-index:999;}
+    to{ z-index:-99; top:150%;display:none}
+}
+@-moz-keyframes lastdrop{
+    from { z-index:999;}
+    to{ z-index:-99; top:150%;display:none}
+}
+@-ms-keyframes lastdrop{
+    from { z-index:999;}
+    to{ z-index:-99; top:150%;display:none}
 }
