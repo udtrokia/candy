@@ -1,79 +1,110 @@
 
 const styles = theme =>({
     ctn:{
-	display:'flex',
-	alignItems:'center',
-	flexDirection:'column',
+		display:'flex',
+		alignItems:'center',
+		flexDirection:'column',
 
     },
     title:{
-	fontSize:32,
-	color:'#ffbb42',
-	marginTop:45
+		fontSize:32,
+		color:'#ffbb42',
+		marginTop:45
     },
     img:{
-	width:228,
-	height:228
+		width:228,
+		height:228
     },
     divider:{
-	height:1,
-	width:'80vw',
-	marginBottom:15,
-	backgroundColor:'#ffbb42',	
+		height:1,
+		width:'80vw',
+		marginBottom:15,
+		backgroundColor:'#ffbb42',	
     },
     p:{
-	width:'80vw',
-	color:'#ffbb42'
+		width:'80vw',
+		color:'#ffbb42'
     },
     btn:{
-	marginTop:15,
-        width:220,
-	height:55,
-	backgroundImage: 'url('+require('./assets/btn.png') +')',
+		marginTop:33,
+        width:180,
+		height:45,
+		backgroundImage: 'url('+require('./assets/btn.png') +')',
         backgroundSize: "cover",
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center'
     },
     bg:{
-	backgroundImage: 'url('+require('./assets/bg.png') +')'
+		backgroundImage: 'url('+require('./assets/bg.png') +')'
     },
     candies:{
-	display:'flex',
-	flexDirection:'row'
+		display:'flex',
+		flexDirection:'row',
+		justifyContent:'center',
+		alignItems:'center'
     },
     candy:{
-	height:'48px',
-	width: '48px',
-	backgroundImage: 'url('+require('./assets/candy.png') +')',
-	backgroundSize: "48px 48px",
-	backgroundRepeat: 'no-repeat',
-	position:'absolute'
+		marginRight:5,
+		height:32,
+		width: 32,
+		backgroundImage: 'url('+require('./assets/candy.png') +')',
+		backgroundSize: "contain",
+		backgroundRepeat: 'no-repeat',
+    },    
+    candy_no:{
+		marginRight:5,
+		height:32,
+		width: 32,
+		backgroundImage: 'url('+require('./assets/candy_no.png') +')',
+		backgroundSize: "cover",
+		backgroundRepeat: 'no-repeat',
     },
+    candy_big:{
+		height:48,
+		width: 48,
+		backgroundImage: 'url('+require('./assets/candy_big.png') +')',
+		backgroundSize: '48px 48px',
+		backgroundRepeat: 'no-repeat',
+    },    
     _package:{
-	position:'relative',
-	left:12,
-	height: 180,
-	width: 180,
-	backgroundImage: 'url('+require('./assets/package.png') +')',
-	backgroundSize: "156px 156px",
-	backgroundRepeat: 'no-repeat',
+		marginTop:20,
+		position:'relative',
+		height: 84,
+		width: 84,
+		backgroundImage: 'url('+require('./assets/package.png') +')',
+		backgroundSize: "cover",
+		backgroundRepeat: 'no-repeat',
     },
     _banner:{
-	width:300,
-	height:98,
-	backgroundImage: 'url('+require('./assets/banner.png') +')',
-	backgroundSize: "cover",
-	backgroundRepeat: 'no-repeat',	
+		position:'relative',
+		width:300,
+		height:98,
+		backgroundImage: 'url('+require('./assets/banner.png') +')',
+		backgroundSize: "cover",
+		backgroundRepeat: 'no-repeat',	
     },
     _bar:{
-	position:'relative',
-	width:240,
-	height:90,
-	backgroundImage: 'url('+require('./assets/bar.png') +')',
-	backgroundSize: "cover",
-	backgroundRepeat: 'no-repeat',
-	backgroundPosition: 'center'
+		position:'relative',
+		marginBottom:8,
+		height:20,
+		backgroundSize: "contain",
+		backgroundRepeat: 'no-repeat',
+		backgroundPosition: 'center'
     },
+    _board:{
+		top:10,
+		position:'relative',
+		display:'flex',
+		flexDirection:'column',
+		justifyContent:'center',
+        width: 300,
+        height:198,
+        backgroundSize: "cover",
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+		backgroundImage: 'url('+require('./assets/board.png') +')',	
+
+    }
     
 })
 

@@ -1,4 +1,0 @@
-const p = {
-    title :"新年糖果大派送!"
-}
-export p

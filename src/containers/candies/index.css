@@ -1,5 +1,5 @@
 #c1{
-    right:59vw;
+    right:50vw;
     top:24vw;
     transform: rotate(-30deg);
     -webkit-transform: rotate(-30deg);
@@ -27,8 +27,8 @@
     -ms-animation-fill-mode:forwards;    
 }
 #c3{
-    top:35vw;
-    right:50vw;
+    top:16vw;
+    right:63vw;
     transform: rotate(30deg);
     -webkit-transform: rotate(30deg);
     -moz-transform: rotate(30deg);
@@ -41,12 +41,12 @@
     -ms-animation-fill-mode:forwards;    
 }
 #c4{
-    top:12vw;
-    right:32vw;
-    transform: rotate(20deg);
-    -webkit-transform: rotate(20deg);
-    -moz-transform: rotate(20deg);
-    -ms-transform: rotate(20deg);
+    top:10vw;
+    right:40vw;
+    transform: rotate(13deg);
+    -webkit-transform: rotate(13deg);
+    -moz-transform: rotate(13deg);
+    -ms-transform: rotate(13deg);
     -webkit-animation: lastdrop 3s ease 1;
     -webkit-animation-fill-mode:forwards;
     -moz-animation: lastdrop 3s ease 1;
@@ -55,18 +55,18 @@
     -ms-animation-fill-mode:forwards;    
 }
 #c5{
-    right:40vw;
-    top:32vw;
-    transform: rotate(35deg);
-    -webkit-transform: rotate(37deg);
-    -moz-transform: rotate(37deg);
-    -ms-transform: rotate(37deg);
+    top:3vw;
+    right:72vw;
+    transform: rotate(-66deg);
+    -webkit-transform: rotate(-66deg);
+    -moz-transform: rotate(-66deg);
+    -ms-transform: rotate(-66deg);
     -webkit-animation: lastdrop 3s ease 1;
     -webkit-animation-fill-mode:forwards;
     -moz-animation: lastdrop 3s ease 1;
     -moz-animation-fill-mode:forwards;
     -ms-animation: lastdrop 3s ease 1;
-    -ms-animation-fill-mode:forwards;    
+    -ms-animation-fill-mode:forwards;        
 }
 #c6{
     top:23vw;
@@ -96,19 +96,14 @@
     -ms-animation: lastdrop 3s ease 1;
     -ms-animation-fill-mode:forwards;    
 }
-#c8{
+#big{
     top:3vw;
     right:72vw;
-    transform: rotate(-66deg);
-    -webkit-transform: rotate(-66deg);
-    -moz-transform: rotate(-66deg);
-    -ms-transform: rotate(-66deg);
-    -webkit-animation: lastdrop 3s ease 1;
-    -webkit-animation-fill-mode:forwards;
-    -moz-animation: lastdrop 3s ease 1;
-    -moz-animation-fill-mode:forwards;
-    -ms-animation: lastdrop 3s ease 1;
-    -ms-animation-fill-mode:forwards;    
+    animation: btc ease infinite;
+    -webkit-animation: btc 2s ease infinite ;            
+    -moz-animation: btc 2s ease infinite ;
+    -ms-animation: btc 2s ease infinite ;
+
 }
 
 #m{
@@ -121,22 +116,33 @@
     -webkit-transform: translateY(-100px);
 }
 
-@keyframes myfirst{
-    from {background:red;}
-    to {background:yellow;}
+#intro{
+	animation:gradual 3s ease-in infinite;
+	-webkit-animation:gradual 3s ease-in infinite;
+	-ms-animation:gradual 3s ease-in infinite;
+	animation-direction:alternate;
+	-webkit-animation-direction:alternate;
+	-ms-animation-direction:alternate;	
 }
 
-@-webkit-keyframes myfirst /* Safari and Chrome */{
+@keyframes gradual{
+    0% { opacity:0 }
+	25% { opacity:1 }
+	75% {opacity:1 }
+    100% { opacity:0 }	
+}
+
+@keyframes btc{
     from {
-	background:red;
-	left:0px;
-	bottom:0px;
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
     }
-    to {
-	left:50vw;
-	bottom:-9999px;
-	background:yellow;
-	transform: translateY(-100px);
-    }
-    
+    to{
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    }	
 }

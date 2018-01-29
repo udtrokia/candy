@@ -42,20 +42,35 @@ html,body,div{
     to{ z-index:-99; top:150%;display:none}
 }
 
-@keyframes lastdrop{
+@keyframes dropsss{
     from { z-index:999;}
     to{ z-index:-99; top:150%;display:none}
 }
 
-@-webkit-keyframes lastdrop{
+@-webkit-keyframes dropsss{
     from { z-index:999;}
     to{ z-index:-99; top:150%;display:none}
 }
-@-moz-keyframes lastdrop{
+@-moz-keyframes dropsss{
     from { z-index:999;}
     to{ z-index:-99; top:150%;display:none}
 }
-@-ms-keyframes lastdrop{
+@-ms-keyframes dropsss{
     from { z-index:999;}
     to{ z-index:-99; top:150%;display:none}
+}
+
+@keyframes btc{
+    from {
+	transform: rotate(0deg);
+	-webkit-transform: rotate(0deg);
+	-moz-transform: rotate(0deg);
+	-ms-transform: rotate(0deg);
+    }
+    to{
+	transform: rotate(360deg);
+	-webkit-transform: rotate(360deg);
+	-moz-transform: rotate(360deg);
+	-ms-transform: rotate(360deg);	
+    }
 }

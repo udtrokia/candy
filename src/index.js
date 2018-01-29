@@ -14,7 +14,27 @@ import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 //}, false);
 
 const store = createStore(todoApps)
-const theme = createMuiTheme()
+const theme = createMuiTheme({
+	overrides: {
+		MuiFormLabel:{
+			focused:{
+				color:'#ffbb42'
+			}
+		},
+		MuiInput: {
+			underline: {
+				'&:before': {
+					backgroundColor:'rgba(0, 0, 0, 0.54)'
+				}
+			},
+			inkbar: {
+				'&:after': {
+					backgroundColor:'#ffbb42'
+				}
+			}
+		}
+	}
+})
 
 ReactDOM.render(
     <Provider store={store}>
