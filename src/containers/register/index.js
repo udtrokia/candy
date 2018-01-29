@@ -5,7 +5,6 @@ import Button from 'material-ui/Button';
 import Input, {InputLabel} from 'material-ui/Input';
 import { FormControl } from 'material-ui/Form';
 import Grid from 'material-ui/Grid'
-import TextField from 'material-ui/TextField'
 import { connect } from 'react-redux'
 import createHistory from "history/createBrowserHistory"
 import { withStyles } from 'material-ui/styles'
@@ -57,7 +56,7 @@ class SimpleModal extends React.Component {
 		label: '手机号',//验证码
 		click: getCode//get candies
 	}
-	getCodeCB = ()=> {
+	getCodeCB = async()=> {
 		this.setState({
 			disabled: true,
 			btnColor: '#dfdfdf',
@@ -67,7 +66,6 @@ class SimpleModal extends React.Component {
     render() {
 		const { auth, dispatch } = this.props
 		const handleClose = reddit => dispatch({type:"REGISTER",reddit})
-		const { classes } = this.props
 		
 		return (
 			<Modal
