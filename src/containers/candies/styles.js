@@ -29,13 +29,13 @@ const styles = theme =>({
 		marginTop:33,
         width:180,
 		height:45,
-		backgroundImage: 'url('+require('./assets/btn.png') +')',
+		backgroundImage: 'url(/candies/btn.png)',
         backgroundSize: "cover",
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center'
     },
     bg:{
-		backgroundImage: 'url('+require('./assets/bg.png') +')'
+		backgroundImage: 'url(/candies/bg.png)'
     },
     candies:{
 		display:'flex',
@@ -47,7 +47,7 @@ const styles = theme =>({
 		marginRight:5,
 		height:32,
 		width: 32,
-		backgroundImage: 'url('+require('./assets/candy.png') +')',
+		backgroundImage: 'url(/candies/candy.png)',
 		backgroundSize: "contain",
 		backgroundRepeat: 'no-repeat',
     },    
@@ -55,14 +55,14 @@ const styles = theme =>({
 		marginRight:5,
 		height:32,
 		width: 32,
-		backgroundImage: 'url('+require('./assets/candy_no.png') +')',
+		backgroundImage: 'url(/candies/candy_no.png)',
 		backgroundSize: "cover",
 		backgroundRepeat: 'no-repeat',
     },
     candy_big:{
 		height:48,
 		width: 48,
-		backgroundImage: 'url('+require('./assets/candy_big.png') +')',
+		backgroundImage: 'url(/candies/candy_big.png)',
 		backgroundSize: '48px 48px',
 		backgroundRepeat: 'no-repeat',
     },    
@@ -71,7 +71,7 @@ const styles = theme =>({
 		position:'relative',
 		height: 84,
 		width: 84,
-		backgroundImage: 'url('+require('./assets/package.png') +')',
+		backgroundImage: 'url(/candies/package.png)',
 		backgroundSize: "cover",
 		backgroundRepeat: 'no-repeat',
     },
@@ -79,7 +79,7 @@ const styles = theme =>({
 		position:'relative',
 		width:300,
 		height:98,
-		backgroundImage: 'url('+require('./assets/banner.png') +')',
+		backgroundImage: 'url(/candies/banner.png)',
 		backgroundSize: "cover",
 		backgroundRepeat: 'no-repeat',	
     },
@@ -102,7 +102,7 @@ const styles = theme =>({
         backgroundSize: "cover",
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
-		backgroundImage: 'url('+require('./assets/board.png') +')',	
+		backgroundImage: 'url(/candies/board.png)',	
 
     }
     

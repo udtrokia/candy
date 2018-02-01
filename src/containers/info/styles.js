@@ -20,7 +20,7 @@ const styles = theme => ({
 	position:'relative',
 	width:220,
 	height:55,
-	backgroundImage: 'url('+require('./images/btn.png') +')',
+	backgroundImage: 'url(/info/btn.png)',
         backgroundSize:'cover',
         backgroundRepeat: 'no-repeat',
     },
@@ -35,7 +35,7 @@ const styles = theme => ({
 	width:170,
 	height:179,
 	color:'#ffbb42',
-	backgroundImage: 'url('+require('./images/box.png') +')',
+	backgroundImage: 'url(/info/box.png)',
 	backgroundSize:'cover',
 	backgroundRepeat: 'no-repeat',
     },
@@ -45,7 +45,7 @@ const styles = theme => ({
 	width:318,
         height:169,
 	color:'#ffbb42',
-	backgroundImage: 'url('+require('./images/bar.png') +')',
+	backgroundImage: 'url(/info/bar.png)',
 	backgroundSize:'cover',
 	backgroundRepeat: 'no-repeat',
 
@@ -58,7 +58,7 @@ const styles = theme => ({
 	alignItems:'center',
     },
     bg:{
-        backgroundImage: 'url('+require('./images/bg.png') +')',
+        backgroundImage: 'url(/info/bg.png)',
 	backgroundSize:'cover',
 	backgroundRepeat: 'no-repeat',	
     }
