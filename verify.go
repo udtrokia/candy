@@ -4,12 +4,13 @@ package main
 import (
 	//	"github.com/kataras/iris"
 	"bytes"
-	"fmt"
+//	"fmt"
 	"net/http"
 	"strings"
 	"io/ioutil"
 	"github.com/kataras/iris"
 	"encoding/json"
+	"gopkg.in/yaml.v2"
 )
 
 type Start struct {
@@ -27,8 +28,24 @@ type Check struct {
 type Stat struct {
 	Success bool
 }
+
+type Config struct {
+	User string
+	Api_key string	
+	Password string
+	Database string
+	
+}
+
 // send code
 func start ( ctx iris.Context ) {
+
+	// config
+	c := Config{}
+	y,_ := ioutil.ReadFile("./config.yaml")
+	yaml.Unmarshal(y, &c)
+	api_key := c.Api_key
+	
 	// expected phone_number, country_code	
 	_start := &Start{}
 	if err := ctx.ReadJSON(_start); err != nil {
@@ -36,10 +53,9 @@ func start ( ctx iris.Context ) {
 		ctx.WriteString(err.Error())
 		return
 	}
-	
+
 	// combine url	
 	var buf bytes.Buffer
-	api_key := "vPBBtHLZJh4IpJwO635VfQfeaB8ptoEx"	
 	basic_url := "https://api.authy.com/protected/json/phones/verification/start?api_key="
 	buf.WriteString(basic_url)
 	buf.WriteString(api_key)
@@ -51,13 +67,11 @@ func start ( ctx iris.Context ) {
 	data.WriteString(string(_start.Country_code))
 	data.WriteString("&phone_number=")
 	data.WriteString(string(_start.Phone_number))
-
+	
 	// post
 	resp, err := http.Post( url, "application/x-www-form-urlencoded", strings.NewReader(data.String()) )
 	body, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		ctx.JSON(&Issue{ Loc : "Twillio Start Fail"})
-	}
+	if err != nil { ctx.JSON(&Issue{ Loc : "Twillio Start Fail"}) }
 	
 	var twilliocb Stat
 	json.Unmarshal(body, &twilliocb)
@@ -69,6 +83,12 @@ func start ( ctx iris.Context ) {
 }
 
 func check ( ctx iris.Context ) {
+	// config
+	c := Config{}
+	y,_ := ioutil.ReadFile("./config.yaml")
+	yaml.Unmarshal(y, &c)
+	api_key := c.Api_key
+	
 	// expected country_code, phone_number, verification_code
 	_check := &Check{}
 	if err := ctx.ReadJSON(_check); err != nil {
@@ -76,9 +96,8 @@ func check ( ctx iris.Context ) {
 		ctx.WriteString(err.Error())
 		ctx.JSON(&Issue{ Loc : "Clear" })
 	}
-	fmt.Println(_check)
+
 	// combine url
-	api_key := "vPBBtHLZJh4IpJwO635VfQfeaB8ptoEx"
 	basic_url := "https://api.authy.com/protected/json/phones/verification/check?api_key="
 	
 	var buf bytes.Buffer	
@@ -101,7 +120,6 @@ func check ( ctx iris.Context ) {
 	body, err := ioutil.ReadAll(resp.Body)
 	var twilliocb Stat
 	json.Unmarshal(body, &twilliocb)
-	fmt.Println(string(body))
 	if (twilliocb.Success){
 		invater := _check.Invater
 		_user := &Users{
@@ -115,7 +133,6 @@ func check ( ctx iris.Context ) {
 	}else{
 		ctx.JSON(&Issue{"Twillio Check Fail"})
 	}
-//	if stat2.Success { insert( _user, invater ) }
 	return
 }
 

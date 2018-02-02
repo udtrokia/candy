@@ -2,6 +2,8 @@ package main
 
 import (
 	"github.com/go-pg/pg"
+	"io/ioutil"
+	"gopkg.in/yaml.v2"
 )
 
 
@@ -17,12 +19,18 @@ type Issue struct {
 }
 
 func insert ( user *Users, invater string ) *Issue {
+	// config
+	c := Config{}
+	y,_ := ioutil.ReadFile("./config.yaml")
+	yaml.Unmarshal(y, &c)
+	
 	// connect db
 	db := pg.Connect(&pg.Options{
-		User: "mercurio",
-		Password: "181058,",
-		Database: "candy",
+		User: c.User,
+		Password: c.Password,
+		Database: c.Database,
 	})
+	
 	// insert
 	err := db.Insert(user)
 	if err != nil {
@@ -32,15 +40,20 @@ func insert ( user *Users, invater string ) *Issue {
 	//close db
 	err = db.Close()
 	if err != nil { panic(err) }
-	return  &Issue{ Loc : "Inset New User Success!"}
+	return  &Issue{ Loc : "Insert New User Success!"}
 }
 
 func update ( user *Users ) {
+	// config
+	c := Config{}
+	y,_ := ioutil.ReadFile("./config.yaml")
+	yaml.Unmarshal(y, &c)
+	
 	// connect db
 	db := pg.Connect(&pg.Options{
-		User: "mercurio",
-		Password: "181058,",
-		Database: "candy",
+		User: c.User,
+		Password: c.Password,
+		Database: c.Database,
 	})
 
 	// update 
