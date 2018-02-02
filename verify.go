@@ -3,8 +3,8 @@ package main
 
 import (
 	//	"github.com/kataras/iris"
+	"bytes"
 	"fmt"
-	"bytes"	
 	"net/http"
 	"strings"
 	"io/ioutil"
@@ -13,17 +13,20 @@ import (
 )
 
 type Start struct {
-	Country_code int
-	Phone_number int64
+	Country_code string
+	Phone_number string
 }
 
 type Check struct {
-	Invater int64
-	Country_code int
-	Phone_number int64
+	Invater string
+	Country_code string
+	Phone_number string
 	Verification_code string
 }
 
+type Stat struct {
+	Success bool
+}
 // send code
 func start ( ctx iris.Context ) {
 	// expected phone_number, country_code	
@@ -33,11 +36,10 @@ func start ( ctx iris.Context ) {
 		ctx.WriteString(err.Error())
 		return
 	}
-
-
+	
 	// combine url	
 	var buf bytes.Buffer
-	api_key := "fDhZoo8j1WmTDjGp0eyUmzKilmz6dwQ0"	
+	api_key := "vPBBtHLZJh4IpJwO635VfQfeaB8ptoEx"	
 	basic_url := "https://api.authy.com/protected/json/phones/verification/start?api_key="
 	buf.WriteString(basic_url)
 	buf.WriteString(api_key)
@@ -52,9 +54,17 @@ func start ( ctx iris.Context ) {
 
 	// post
 	resp, err := http.Post( url, "application/x-www-form-urlencoded", strings.NewReader(data.String()) )
-	if err != nil { fmt.Println(err) }
-	defer resp.Body.Close()
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		ctx.JSON(&Issue{ Loc : "Twillio Start Fail"})
+	}
 	
+	var twilliocb Stat
+	json.Unmarshal(body, &twilliocb)
+	if twilliocb.Success{
+		ctx.JSON(&Issue{ Loc : "Send Out" })
+	}
+	defer resp.Body.Close()	
 	return 
 }
 
@@ -64,44 +74,48 @@ func check ( ctx iris.Context ) {
 	if err := ctx.ReadJSON(_check); err != nil {
 		ctx.StatusCode(iris.StatusBadRequest)
 		ctx.WriteString(err.Error())
-		return
+		ctx.JSON(&Issue{ Loc : "Clear" })
 	}
-	
+	fmt.Println(_check)
 	// combine url
-	api_key := "fDhZoo8j1WmTDjGp0eyUmzKilmz6dwQ0"	
+	api_key := "vPBBtHLZJh4IpJwO635VfQfeaB8ptoEx"
 	basic_url := "https://api.authy.com/protected/json/phones/verification/check?api_key="
 	
 	var buf bytes.Buffer	
 	buf.WriteString(basic_url)
 	buf.WriteString(api_key)
 	buf.WriteString("&phone_number=")
-	buf.WriteString(string(_check.Phone_number))
+	buf.WriteString(_check.Phone_number)
 	buf.WriteString("&country_code=")
-	buf.WriteString(string(_check.Country_code))
+	buf.WriteString(_check.Country_code)
 	buf.WriteString("&verification_code=")
 	buf.WriteString(_check.Verification_code)
-	
+
 	url := buf.String()
 	resp, err := http.Get( url )
-	if err != nil { fmt.Println(err) }
-	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
-	if err != nil { fmt.Println(err) }
-	type Stat struct { Success bool }
-	var stat Stat
-	json.Unmarshal( body, &stat)
-	
-	invater := _check.Invater
-	
-	_info := &Info{
-		Id: _check.Phone_number,
-		Candies: 100,
-		Followers: 0,		
+	defer resp.Body.Close()	
+	if err != nil {
+		ctx.JSON(&Issue{ Loc : " Twillio Post Check Fail " })
 	}
-	
-	if stat.Success { insert( _info, invater ) }
-	ctx.JSON( stat )		
 
-	return 
+	body, err := ioutil.ReadAll(resp.Body)
+	var twilliocb Stat
+	json.Unmarshal(body, &twilliocb)
+	fmt.Println(string(body))
+	if (twilliocb.Success){
+		invater := _check.Invater
+		_user := &Users{
+			Id: _check.Phone_number,
+			Candies: 100,
+			Followers: 0,
+			Country_code: "86",
+		}
+		issue := insert(_user, invater)
+		ctx.JSON(issue)
+	}else{
+		ctx.JSON(&Issue{"Twillio Check Fail"})
+	}
+//	if stat2.Success { insert( _user, invater ) }
+	return
 }
 

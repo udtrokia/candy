@@ -5,41 +5,37 @@ import (
 )
 
 
-type Info struct {
-	Id int64
+type Users struct {
+	Id string
 	Candies int
 	Followers int
+	Country_code string
 }
 
-func insert( info *Info, invater int64 ) {
+type Issue struct {
+	Loc string
+}
+
+func insert ( user *Users, invater string ) *Issue {
 	// connect db
 	db := pg.Connect(&pg.Options{
 		User: "mercurio",
 		Password: "181058,",
 		Database: "candy",
 	})
-	
-	// select
-	_id := Info{ Id: info.Id }
-	err := db.Select(&_id)
+	// insert
+	err := db.Insert(user)
 	if err != nil {
-		panic(err)
-		return
+		return  &Issue{ Loc: "exist" }
 	}
 	
-	// insert
-	err = db.Insert(&info)
-	if err != nil { panic(err) }
-	update(&Info{Id:invater})
 	//close db
 	err = db.Close()
 	if err != nil { panic(err) }
-
-	return
+	return  &Issue{ Loc : "Inset New User Success!"}
 }
 
-func update ( info *Info ) {
-	
+func update ( user *Users ) {
 	// connect db
 	db := pg.Connect(&pg.Options{
 		User: "mercurio",
@@ -48,10 +44,9 @@ func update ( info *Info ) {
 	})
 
 	// update 
-	user := &Info{ Id: info.Id }
 	user.Followers += 1
 	user.Candies += 20 
-	err := db.Update(user)
+	err := db.Update(&user)
 	if err != nil { panic(err) }
 
 	//close db
