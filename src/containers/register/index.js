@@ -8,16 +8,13 @@ import Grid from 'material-ui/Grid'
 import { connect } from 'react-redux'
 import createHistory from "history/createBrowserHistory"
 import { withStyles } from 'material-ui/styles'
+import axios from 'axios'
 const history = createHistory()
 
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
-//function rand() {
-//  return Math.floor(Math.random() * 20) - 10;
-//}
 
 function getModalStyle() {
-    //  const top = 50 + rand();
-    //  const left = 50 + rand();
     const top = 50
     const left = 50
     return {
@@ -40,10 +37,7 @@ const styles = {
 	}
 }
 
-//const getCandies = async()=> {
-//	history.push('/info')
-//	history.go()
-//}
+
 class SimpleModal extends React.Component {
 	constructor(props){
 		super(props)
@@ -54,16 +48,16 @@ class SimpleModal extends React.Component {
 		btnColor: '#ffbb42',//dfdfdf
 		fontColor: '#db4e43',//ddd
 		label: '手机号',//验证码
-		codeVerify: false,
-		country_code: 86,
+		country_code: '86',
 		phone_number: '',
 		verification_code: '',
-		invater: Number
+		friendid: "",
+		w: 9
 	}
 	componentWillMount(){
 		if(window.location.search){
 			this.setState({
-				invater: window.location.search.slice(1)
+				friendid: window.location.search.slice(1)
 			})
 		}
 	}
@@ -73,31 +67,31 @@ class SimpleModal extends React.Component {
 			btnColor: '#ffbb42',
 			fontColor: '#db4e43',
 		})
-		let data = {
-			country_code: this.state.country_code,
-			phone_number: this.state.phone_number,
-			verification_code: this.state.verification_code,
-			invater: this.state.invater
-		}
-		let _headers = new Headers()
-		_headers.append('Content-Type', 'application/json')
-		let requests = new Request('url', {
-			method: 'POST',
-			body: JSON.stringify(data),
-			headers: _headers
+
+		let res = await axios({
+			method: 'post',
+			url: 'http://localhost:8080/api/verify/start',
+			data: {
+				country_code: this.state.country_code,
+				phone_number: this.state.phone_number,
+				verification_code: this.state.verification_code,
+				friendid: this.state.friendid
+			}
 		})
-		let res = await fetch(requests)
-		if (res.Success){
+		console.log(res)
+		if (res.data.Success){
 			localStorage.setItem('auth',true)
 			history.push('/info')
 			history.go(0)
 		}		
 	}
 	codeSend = async () => {
+		let myHeaders = new Headers();
+		myHeaders.append('Content-Type', 'application/json');
 		const { country_code, phone_number } = this.state
 		if ( country_code.toString().length < 0 || country_code.toString().length > 3 ){
 			alert('请输入正确的区号')
-		} else if ( phone_number.toString().length !== 11 ){
+		} else if ( this.state.w ==9 &&phone_number.toString().length !== 11 ){
 			alert('请输入正确的电话号码')
 		} else {
 			this.setState({
@@ -105,22 +99,25 @@ class SimpleModal extends React.Component {
 				btnColor: '#dfdfdf',
 				fontColor:'#999',
 			})
-			let data = {
-				country_code: this.state.country_code,
-				phone_number: this.state.phone_number
-			}
-			let _headers = new Headers()
-			_headers.append('Content-Type', 'application/json')
-			let requests = new Request('url', {
-				method: 'POST',
-				body: JSON.stringify(data),
-				headers: _headers
-			})
-			let res = await fetch(requests)
-			if (res.Success){
+			let res = await axios({
+				method: 'post',
+				url: 'http://localhost:8080/verify/start',
+				data: {
+					country_code: this.state.country_code,
+					phone_number: this.state.phone_number,
+					verification_code: this.state.verification_code,
+					friendid: this.state.friendid
+				}
+			})			
+			console.log(res)
+			if (res.data.Success){
 				this.setState({
-					send:true,
-					label: "验证码"
+					disabled: false,
+					btnColor: '#ffbb42',
+					fontColor: '#db4e43',
+					label: "验证码",
+					phone_number:'',
+					w:12
 				})
 			}
 		}
@@ -129,7 +126,6 @@ class SimpleModal extends React.Component {
     render() {
 		const { auth, dispatch } = this.props
 		const handleClose = reddit => dispatch({type:"REGISTER",reddit})
-		
 		return (
 			<Modal
 				aria-labelledby="simple-modal-title"
@@ -140,8 +136,8 @@ class SimpleModal extends React.Component {
 					<Typography type="title" id="modal-title"
 						style={{color:'#ffbb42'}}>糖果社区</Typography>
 					<Grid style={{display:'flex',flexDirection:'column'}}>
-						<Grid container>
-							{ !this.state.codeVerify ?<Grid item xs={3}>
+						<Grid container >
+							{ this.state.w==9 ?<Grid item xs={3}>
 								<FormControl style={{marginTop:25,color:'#ffbb42'}}	>
 									<InputLabel htmlFor="_input">区号</InputLabel>
 									<Input defaultValue={86} type="number"
@@ -150,10 +146,11 @@ class SimpleModal extends React.Component {
 									/>
 								</FormControl>	
 							</Grid> :<div></div>}
-							<Grid item xs={9}>
+							<Grid item xs={this.state.w}>
 								<FormControl style={{marginTop:25,color:'#ffbb42'}}	>
 									<InputLabel htmlFor="_input">{this.state.label}</InputLabel>
 									<Input
+									fullWidth
 									value={this.state.phone_number}
 									style={{color:'#ffbb42'}} id="_input" type="number"
 									onChange={ item => { this.setState({ phone_number: item.target.value }) }}
