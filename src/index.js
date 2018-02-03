@@ -7,6 +7,17 @@ import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import todoApps from './reducers'
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
+import Gun from 'gun'
+
+var gun = Gun()
+gun.get('a').put({
+	name: "Mark",
+	email: "mark@gunDB.io",
+})
+gun.get('a').on((data,key)=>{
+	console.log("update",data)
+})
+
 
 //document.addEventListener("touchmove", (e)=>{
 //    e.preventDefault()

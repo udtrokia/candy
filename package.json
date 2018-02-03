@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.17.1",
+    "gun": "^0.9.91",
     "history": "^4.7.2",
     "install": "^0.10.4",
     "material-ui": "^1.0.0-beta.30",

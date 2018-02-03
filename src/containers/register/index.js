@@ -91,7 +91,7 @@ class SimpleModal extends React.Component {
 		const { country_code, phone_number } = this.state
 		if ( country_code.toString().length < 0 || country_code.toString().length > 3 ){
 			alert('请输入正确的区号')
-		} else if ( this.state.w ==9 &&phone_number.toString().length !== 11 ){
+		} else if ( this.state.w ===9 &&phone_number.toString().length !== 11 ){
 			alert('请输入正确的电话号码')
 		} else {
 			this.setState({
@@ -137,7 +137,7 @@ class SimpleModal extends React.Component {
 						style={{color:'#ffbb42'}}>糖果社区</Typography>
 					<Grid style={{display:'flex',flexDirection:'column'}}>
 						<Grid container >
-							{ this.state.w==9 ?<Grid item xs={3}>
+							{ this.state.w===9 ?<Grid item xs={3}>
 								<FormControl style={{marginTop:25,color:'#ffbb42'}}	>
 									<InputLabel htmlFor="_input">区号</InputLabel>
 									<Input defaultValue={86} type="number"
